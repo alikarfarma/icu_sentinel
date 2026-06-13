@@ -1,0 +1,13 @@
+[project]
+name = "icu_sentinel"
+version = "0.1.0"
+description = "Multimodal deep learning system for early sepsis risk assessment"
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
