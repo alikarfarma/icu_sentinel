@@ -1,0 +1,32 @@
+```yaml
+name: early_sepsis_risk_prediction
+description: Predict whether an ICU patient develops sepsis within a future prediction horizon.
+
+target:
+  event: sepsis_onset
+  positive_label: 1
+  negative_label: 0
+  prediction_output: probability
+
+windows:
+  observation_window_hours: 24
+  prediction_horizon_hours: 6
+  gap_window_hours: 0
+
+splitting:
+  unit: patient
+  train_fraction: 0.7
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  random_seed: 42
+
+modalities:
+  - vitals
+  - labs
+  - demographics
+  - derived
+
+leakage_controls:
+  use_only_observation_window_data: true
+  split_by_patient: true
+  exclude_events_before_window_end: true
